@@ -10,10 +10,6 @@ Looking for different code translations of [this theory](http://mathproofs.blogs
 
 I took the time to convert his code to blueprint-compatible code. We can now use Critically Damped Spring Interpolation Smoothing in Unreal Engine, which is very similar to Unity's SmoothDamp, but with less operations. 
 
-
-![Unreal SmoothDamp](Documentation/UnrealSmoothDamp.gif)
-
-
 Accessible in Blueprints:
 
 * [VectorSpringInterpCD](Source/MotionExperiments/Interpolation/InterpolationLibrary.cpp#L9)
@@ -23,6 +19,8 @@ Accessible in Blueprints:
 
 You can also get the [gist of it here](https://gist.github.com/josimard/5737f3488fdfa2d207d68de282904479).
 
+
+![Unreal SmoothDamp](Documentation/UnrealSmoothDamp.gif =800x)
 
 
 ### Slerp for Unreal Rotators
