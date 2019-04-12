@@ -19,9 +19,7 @@ Accessible in Blueprints:
 
 You can also get the [gist of it here](https://gist.github.com/josimard/5737f3488fdfa2d207d68de282904479).
 
-
-![Unreal SmoothDamp](Documentation/UnrealSmoothDamp.gif =800x)
-
+<img src="Documentation/UnrealSmoothDamp.gif" alt="Unreal SmoothDamp" width="800"/>
 
 ### Slerp for Unreal Rotators
 
