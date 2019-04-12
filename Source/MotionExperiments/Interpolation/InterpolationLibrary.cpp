@@ -10,7 +10,7 @@ FVector UInterpolationLibrary::VectorSpringInterpCD(FVector Current, FVector Tar
 {
 	const FVector n1 = Velocity - (Current - Target) * (InterpSpeed * InterpSpeed * DeltaTime);
 	const float n2 = 1.f + InterpSpeed * DeltaTime;
-	Velocity = n1 / (n2 * n2);
+
 	if (MaxVelocity > 0.f)
 	{
 		Velocity = (n1 / (n2 * n2)).GetClampedToMaxSize(MaxVelocity);
@@ -19,6 +19,7 @@ FVector UInterpolationLibrary::VectorSpringInterpCD(FVector Current, FVector Tar
 	{
 		Velocity = n1 / (n2 * n2);
 	}
+
 	return Current + Velocity * DeltaTime;
 }
 
@@ -27,7 +28,14 @@ float UInterpolationLibrary::FloatSpringInterpCD(float Current, float Target, fl
 	const float n1 = Velocity - (Current - Target) * (InterpSpeed * InterpSpeed * DeltaTime);
 	const float n2 = 1.f + InterpSpeed * DeltaTime;
 
-	Velocity = (MaxVelocity > 0.f) ? FMath::Min(n1 / (n2 * n2), MaxVelocity) : n1 / (n2 * n2);
+	if (MaxVelocity > 0.f)
+	{
+		Velocity = FMath::Min(n1 / (n2 * n2), MaxVelocity);
+	}
+	else
+	{
+		Velocity = n1 / (n2 * n2);
+	}
 
 	return Current + Velocity * DeltaTime;
 }
@@ -50,7 +58,6 @@ FQuat UInterpolationLibrary::QuatSpringInterpCD(FQuat Current, FQuat Target, FVe
 
 	const FVector4 n1 = Velocity - (currentVector - targetVector) * (InterpSpeed * InterpSpeed * DeltaTime);
 	const float n2 = 1.f + InterpSpeed * DeltaTime;
-	Velocity = n1 / (n2 * n2);
 
 	if (MaxVelocity > 0.f)
 	{
@@ -60,6 +67,7 @@ FQuat UInterpolationLibrary::QuatSpringInterpCD(FQuat Current, FQuat Target, FVe
 	{
 		Velocity = n1 / (n2 * n2);
 	}
+
 	// Apply delta on current
 	currentVector = (currentVector + Velocity * DeltaTime);
 
@@ -71,25 +79,16 @@ FQuat UInterpolationLibrary::QuatSpringInterpCD(FQuat Current, FQuat Target, FVe
 FRotator UInterpolationLibrary::RotatorSlerpTo(FRotator Current, FRotator Target, float DeltaTime, float InterpSpeed)
 {
 	// If no interp speed, jump to target value
-	if (InterpSpeed <= 0.f)
-	{
-		return Target;
-	}
+	if (InterpSpeed <= 0.f) return Target;
 
 	// If the values are nearly equal, just return Target and assume we have reached our destination.
-	if (Current.Equals(Target))
-	{
-		return Target;
-	}
+	if (Current.Equals(Target)) return Target;
 
 	return FQuat::Slerp(Current.Quaternion(), Target.Quaternion(), FMath::Clamp(InterpSpeed * DeltaTime, 0.f, 1.f)).Rotator();
 }
 
 float UInterpolationLibrary::AngleSpringInterpCD(float CurrentAngle, float TargetAngle, float& Velocity, float DeltaTime, float InterpSpeed, float MaxVelocity, bool ContraintAngle)
 {
-	// Trying different methods
-	//UE_LOG(LogTemp, Log, TEXT("%f to %f, contrained: %f, unwind: %f, delta: %f"), CurrentAngle, TargetAngle, ConstrainAngle360(TargetAngle), FMath::UnwindDegrees(TargetAngle),  FMath::FindDeltaAngleDegrees(CurrentAngle, TargetAngle));
-
 	TargetAngle = CurrentAngle + FMath::FindDeltaAngleDegrees(CurrentAngle, ContraintAngle ? ConstrainAngle360(TargetAngle) : TargetAngle);
 
 	return FloatSpringInterpCD(CurrentAngle, TargetAngle, Velocity, DeltaTime, InterpSpeed, MaxVelocity);

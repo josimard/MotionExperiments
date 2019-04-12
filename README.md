@@ -8,7 +8,7 @@ Some experiments on procedural animations, interpolations, tweening, etc.
 
 Looking for code translations of [this theory](http://mathproofs.blogspot.jp/2013/07/critically-damped-spring-smoothing.html), I stumbled upon [Keijiro's 'SmoothingTest' Repository](https://github.com/keijiro/SmoothingTest).
 
-I took the time to convert his code a blueprint-compatible c++ flavor to use this smoothing type in Unreal Engine, which is similar to [Unity's SmoothDamp](https://github.com/Unity-Technologies/UnityCsReference/blob/master/Runtime/Export/Math/Vector3.cs#L75), but with less operations. 
+I took the time to convert his code in a c++ blueprint-compatible-flavor to use this smoothing type in Unreal Engine, which is similar to [Unity's SmoothDamp](https://github.com/Unity-Technologies/UnityCsReference/blob/master/Runtime/Export/Math/Vector3.cs#L75), but with less operations. 
 
 ![VectorSpringInterpCD](Documentation/VectorSpringInterpCD.png)
 
