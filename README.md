@@ -19,7 +19,9 @@ Accessible in Blueprints:
 
 You can also get the [gist of it here](https://gist.github.com/josimard/5737f3488fdfa2d207d68de282904479).
 
-<img src="Documentation/UnrealSmoothDamp.gif" alt="Unreal SmoothDamp" width="800"/>
+
+![Unreal SmoothDamp](Documentation/UnrealSmoothDamp.gif)
+
 
 ### Slerp for Unreal Rotators
 
@@ -27,3 +29,5 @@ Rotators and practical in blueprints, but using [RInterpTo](https://api.unrealen
 
 If you find your rotations going crazy, you can try using [RotatorSlerpTo()](Source/MotionExperiments/Interpolation/InterpolationLibrary.h#L48) which just converts FRotator to FQuat and then uses FMath::QInterpTo() code.
 
+
+![Unreal SmoothDamp](Documentation/UnrealRotationInterp.gif)
