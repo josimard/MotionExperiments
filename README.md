@@ -6,18 +6,18 @@ Some experiments on procedural animations, interpolations, tweening, etc.
 
 ### Critically Damped Spring Smoothing 
 
-Looking for different code translations of [this theory](http://mathproofs.blogspot.jp/2013/07/critically-damped-spring-smoothing.html), I stumbled upon [Keijiro's 'SmoothingTest' Repository](https://github.com/keijiro/SmoothingTest).
+Looking for code translations of [this theory](http://mathproofs.blogspot.jp/2013/07/critically-damped-spring-smoothing.html), I stumbled upon [Keijiro's 'SmoothingTest' Repository](https://github.com/keijiro/SmoothingTest).
 
-I took the time to convert his code to blueprint-compatible c++. We can now use Critically Damped Spring Interpolation/Smoothing in Unreal Engine, which is similar to [Unity's SmoothDamp](https://github.com/Unity-Technologies/UnityCsReference/blob/master/Runtime/Export/Math/Vector3.cs#L75), but with less operations. 
+I took the time to convert his code a blueprint-compatible c++ flavor to use this smoothing type in Unreal Engine, which is similar to [Unity's SmoothDamp](https://github.com/Unity-Technologies/UnityCsReference/blob/master/Runtime/Export/Math/Vector3.cs#L75), but with less operations. 
 
 ![VectorSpringInterpCD](Documentation/VectorSpringInterpCD.png)
 
 Accessible in Blueprints:
 
-* [VectorSpringInterpCD](Source/MotionExperiments/Interpolation/InterpolationLibrary.cpp#L9)
-* [FloatSpringInterpCD](Source/MotionExperiments/Interpolation/InterpolationLibrary.cpp#L9)
-* [RotatorSpringInterpCD](Source/MotionExperiments/Interpolation/InterpolationLibrary.cpp#L35)
-* [AngleSpringInterpCD](Source/MotionExperiments/Interpolation/InterpolationLibrary.cpp#L88)
+* [VectorSpringInterpCD](Source/MotionExperiments/Interpolation/InterpolationLibrary.h#L23)
+* [FloatSpringInterpCD](Source/MotionExperiments/Interpolation/InterpolationLibrary.h#L29)
+* [RotatorSpringInterpCD](Source/MotionExperiments/Interpolation/InterpolationLibrary.h#L35)
+* [AngleSpringInterpCD](Source/MotionExperiments/Interpolation/InterpolationLibrary.h#L55)
 
 You can also get the [gist of it here](https://gist.github.com/josimard/5737f3488fdfa2d207d68de282904479).
 
