@@ -4,11 +4,11 @@ Some experiments on procedural animations, interpolations, tweening, etc.
 
 ## Interpolation
 
-### Critically Damped Spring Smoothing Interpolation 
+### Critically Damped Spring Smoothing 
 
 Looking for different code translations of [this theory](http://mathproofs.blogspot.jp/2013/07/critically-damped-spring-smoothing.html), I stumbled upon [Keijiro's 'SmoothingTest' Repository](https://github.com/keijiro/SmoothingTest).
 
-I took the time to convert his code to blueprint-compatible c++. We can now use Critically Damped Spring Interpolation/Smoothing in Unreal Engine, which is very similar to Unity's SmoothDamp, but with less operations. 
+I took the time to convert his code to blueprint-compatible c++. We can now use Critically Damped Spring Interpolation/Smoothing in Unreal Engine, which is similar to [Unity's SmoothDamp](https://github.com/Unity-Technologies/UnityCsReference/blob/master/Runtime/Export/Math/Vector3.cs#L75), but with less operations. 
 
 ![VectorSpringInterpCD](Documentation/VectorSpringInterpCD.png)
 
@@ -29,7 +29,7 @@ You can also get the [gist of it here](https://gist.github.com/josimard/5737f348
 
 Rotators and practical in blueprints, but using [RInterpTo](https://api.unrealengine.com/INT/API/Runtime/Engine/Kismet/UKismetMathLibrary/RInterpTo/index.html) on opposed angles sometimes gave me odd results.  
 
-If you find your rotations going crazy, you can try using [RotatorSlerpTo()](Source/MotionExperiments/Interpolation/InterpolationLibrary.h#L48) which just converts FRotator to FQuat and then uses FMath::QInterpTo() code.
+If you find your rotations going crazy, you can try using [RotatorSlerpTo()](Source/MotionExperiments/Interpolation/InterpolationLibrary.h#L48) which just converts FRotator to FQuat and then uses [FMath::QInterpTo()](https://api.unrealengine.com/INT/API/Runtime/Core/Math/FMath/QInterpTo/index.html) code.
 
 
 ![Unreal SmoothDamp](Documentation/UnrealRotationInterp.gif)
