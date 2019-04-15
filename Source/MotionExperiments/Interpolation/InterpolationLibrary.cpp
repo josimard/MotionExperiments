@@ -47,8 +47,7 @@ FRotator UInterpolationLibrary::RotatorSpringInterpCD(FRotator Current, FRotator
 
 FQuat UInterpolationLibrary::QuatSpringInterpCD(FQuat Current, FQuat Target, FVector4& Velocity, float DeltaTime, float InterpSpeed, float MaxVelocity)
 {
-	// Here would it be better to make operations directly on FQuat? 
-	// I can't find FQuat operators code to check, so I prefer those conversions...
+	// More operation options available on FVector4 and multiplier for instance seems lighter, so let's convert before
 	FVector4 currentVector = QuatToVector4(Current);
 	FVector4 targetVector = QuatToVector4(Target);
 
@@ -71,7 +70,6 @@ FQuat UInterpolationLibrary::QuatSpringInterpCD(FQuat Current, FQuat Target, FVe
 	// Apply delta on current
 	currentVector = (currentVector + Velocity * DeltaTime);
 
-	// Normalizing gave odd results, it looks fine this way but don't ask me why...
 	return FQuat(currentVector.X, currentVector.Y, currentVector.Z, currentVector.W);
 }
 
