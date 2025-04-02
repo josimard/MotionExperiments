@@ -2,6 +2,7 @@
 
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
+
 #include "InterpolationLibrary.generated.h"
 
 /**
@@ -93,7 +94,7 @@ private:
 	// In Degrees, [0,360]
 	FORCEINLINE static float ConstrainAngle360(float x)
 	{
-		x = fmod(x, 360);
+		x = FMath::Fmod(x, 360);
 		if (x < 0) x += 360;
 		return x;
 	}
@@ -101,7 +102,7 @@ private:
 	// In Degrees, [-180,180]
 	FORCEINLINE static float ConstrainAngle180(float x)
 	{
-		x = fmod(x + 180, 360);
+		x = FMath::Fmod(x + 180, 360);
 		if (x < 0) x += 360;
 		return x - 180;
 	}

@@ -1,12 +1,15 @@
+// Copyright Epic Games, Inc. All Rights Reserved.
+
 using UnrealBuildTool;
 using System.Collections.Generic;
 
 public class MotionExperimentsEditorTarget : TargetRules
 {
-	public MotionExperimentsEditorTarget(TargetInfo Target) : base(Target)
+	public MotionExperimentsEditorTarget( TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
-
-		ExtraModuleNames.AddRange( new string[] { "MotionExperiments" } );
+		DefaultBuildSettings = BuildSettingsVersion.V5;
+		IncludeOrderVersion = EngineIncludeOrderVersion.Unreal5_5;
+		ExtraModuleNames.Add("MotionExperiments");
 	}
 }

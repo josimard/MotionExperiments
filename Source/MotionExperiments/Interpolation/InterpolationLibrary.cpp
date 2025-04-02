@@ -1,10 +1,11 @@
 #include "InterpolationLibrary.h"
-#include "Kismet/KismetMathLibrary.h"
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Critically Damped Spring Interpolations (ie: Similar to Unity's SmoothDamp, but will less operations)
-// Inspired from Keijiro's code: https://github.com/keijiro/SmoothingTest
-// Math reference: http://mathproofs.blogspot.jp/2013/07/critically-damped-spring-smoothing.html
+// Notes: 
+// * The following code was created before FMath::CriticallyDampedSmoothing() was added to the engine, so implementation might differ
+// * Adapted/inspired from Keijiro's Unity code: https://github.com/keijiro/SmoothingTest
+// * Math reference: http://mathproofs.blogspot.jp/2013/07/critically-damped-spring-smoothing.html
 
 FVector UInterpolationLibrary::VectorSpringInterpCD(FVector Current, FVector Target, FVector& Velocity, float DeltaTime, float InterpSpeed, float MaxVelocity)
 {
@@ -66,6 +67,8 @@ FQuat UInterpolationLibrary::QuatSpringInterpCD(FQuat Current, FQuat Target, FVe
 	{
 		Velocity = n1 / (n2 * n2);
 	}
+
+	FMath::CriticallyDampedSmoothing()
 
 	// Apply delta on current
 	currentVector = (currentVector + Velocity * DeltaTime);

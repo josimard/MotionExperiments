@@ -63,10 +63,12 @@ DerivedDataCache/*
 *.swo
 .ctrlp_cache/
 
-# Visual Studio
+# IDE
 .vs/*
 *.VC.opendb
 *.VC.db
+.vsconfig
+.idea/*
 
 # Local Plugins
 **/Plugins/**/Intermediate/*
