@@ -9,6 +9,8 @@
 
 FVector UInterpolationLibrary::VectorSpringInterpCD(FVector Current, FVector Target, FVector& Velocity, float DeltaTime, float InterpSpeed, float MaxVelocity)
 {
+	// Also refer to FMath::CriticallyDampedSmoothing() for an alternative implementation and more comments/notes
+	// The advantage here for the moment is that VectorSpringInterpCD is usable in blueprints
 	const FVector n1 = Velocity - (Current - Target) * (InterpSpeed * InterpSpeed * DeltaTime);
 	const float n2 = 1.f + InterpSpeed * DeltaTime;
 
@@ -67,9 +69,7 @@ FQuat UInterpolationLibrary::QuatSpringInterpCD(FQuat Current, FQuat Target, FVe
 	{
 		Velocity = n1 / (n2 * n2);
 	}
-
-	FMath::CriticallyDampedSmoothing()
-
+	
 	// Apply delta on current
 	currentVector = (currentVector + Velocity * DeltaTime);
 
